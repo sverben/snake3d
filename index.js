@@ -256,6 +256,19 @@ function update() {
 
     render.time = nextTime;
 
+    var normalscore = document.getElementById("normalscore");
+    normalscore.innerText = "Score: " + render.game.snake.length;
+
+    if (!localStorage.getItem("highscore")) {
+        localStorage.setItem("highscore", render.game.snake.length);
+    }
+    if (render.game.snake.length > localStorage.getItem("highscore")) {
+        localStorage.setItem("highscore", render.game.snake.length);
+    }
+
+    var highscore = document.getElementById("highscore");
+    highscore.innerText = "Highscore: " + localStorage.getItem("highscore");
+
     setTimeout(() => {
         update();
     }, nextTime)
@@ -264,9 +277,9 @@ function update() {
 update();
 
 document.addEventListener("fullscreenchange", ev => {
-    menu.style.display = "flex";
     if (frame != -1) {
         frame = -1;
+        menu.style.display = "flex";
     } else {
         frame = 0;
     }
@@ -274,7 +287,7 @@ document.addEventListener("fullscreenchange", ev => {
 
 backbtn.addEventListener("click", () => {
     menu.style.display = "none";
-    canvas.requestFullscreen();
+    document.body.requestFullscreen();
     canvas.focus();
 })
 

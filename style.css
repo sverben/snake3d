@@ -29,3 +29,25 @@ body {
     border-radius: 10px;
     cursor: pointer;
 }
+
+.score {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: #ffffff20;
+    padding: 10px;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 1px solid white;
+    font-size: 20px;
+    text-align: center;
+}
+
+.score p {
+    margin: 0;
+}
+
+.highscore {
+    font-size: 12px;
+}
