@@ -39,6 +39,12 @@ class Game {
         var apple = [];
         apple.push(Math.floor(Math.random() * 16) - 8);
         apple.push(Math.floor(Math.random() * 16) - 8);
+        for (var part in this.snake) {
+            if (this.snake[part][0] == apple[0] && this.snake[part][1] == apple[1]) {
+                this.addApple();
+                return;
+            }
+        }
         this.apples.push(apple);
     }
 
