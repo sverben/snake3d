@@ -1,8 +1,10 @@
 class Game {
     constructor() {
         this.mat = new BABYLON.StandardMaterial("snake");
-        this.mat.specularColor = new BABYLON.Color3(0.02, 0.56, 0.92);
-        this.mat.diffuseColor = new BABYLON.Color3(0.02, 0.56, 0.92);
+        //this.mat.specularColor = new BABYLON.Color3(0.02, 0.56, 0.92);
+        this.mat.specularColor = new BABYLON.Color3(Math.random(), Math.random(), Math.random());
+        this.mat.diffuseColor = this.mat.specularColor;
+
         this.mat.backFaceCulling = false;
 
         this.deadMat = new BABYLON.StandardMaterial("dead");
