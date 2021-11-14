@@ -12,6 +12,9 @@ class Game {
         this.deadMat.diffuseColor = new BABYLON.Color3(0.92, 0.27, 0.19);
         this.deadMat.backFaceCulling = false;
 
+        this.eatSound = document.createElement("audio");
+        this.eatSound.src = "eat.mp3";
+
         this.init();
     }
 
@@ -108,6 +111,7 @@ class Game {
                 apple.push(Math.floor(Math.random() * 16) - 8);
                 this.apples.splice(index, 1);
                 this.addApple();
+                this.eatSound.play();
                 return true;
             }
         }
