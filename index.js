@@ -26,6 +26,7 @@ class Game {
         this.updateCubes(500);
         this.dead = false;
         this.direction = [0, 1];
+        this.moving = [0, 1];
     }
 
     addSnake() {
@@ -85,14 +86,26 @@ class Game {
     }
 
     turn(direction) {
-        if (direction == "w" || direction == "ArrowUp")
-            this.direction = [0, 1];
-        if (direction == "a" || direction == "ArrowLeft")
-            this.direction = [-1, 0];
-        if (direction == "s" || direction == "ArrowDown")
-            this.direction = [0, -1];
-        if (direction == "d" || direction == "ArrowRight")
-            this.direction = [1, 0]
+        if (direction == "w" || direction == "ArrowUp") {
+            if (this.moving[1] != -1) {
+                this.direction = [0, 1];
+            }
+        }
+        if (direction == "a" || direction == "ArrowLeft") {
+            if (this.moving[0] != 1) {
+                this.direction = [-1, 0];
+            }
+        }
+        if (direction == "s" || direction == "ArrowDown") {
+            if (this.moving[1] != 1) {
+                this.direction = [0, -1];
+            }
+        }
+        if (direction == "d" || direction == "ArrowRight") {
+            if (this.moving[0] != -1) {
+                this.direction = [1, 0];
+            }
+        }
     }
 
     updateSnake() {
@@ -102,6 +115,7 @@ class Game {
         if (this.checkDeath()) {
             this.dead = true;
         }
+        this.moving = this.direction;
     }
 
     checkApple() {
